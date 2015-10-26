@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 // import { fetchUser } from '../actions/github.jsx';
-import Debug from '../components/debug.jsx'
+import Debug from '../components/Debug'
 
 
 // @connect((state, props) => {

@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux';
-import Header from '../components/header.jsx'
-import Footer from '../components/footer.jsx'
-import { login } from '../actions/auth.jsx';
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+import { login } from '../actions/auth';
 
 
 
