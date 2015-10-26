@@ -1,7 +1,7 @@
-import Application from './containers/application.jsx'
-import Home from './containers/home.jsx'
-import User from './containers/user.jsx'
-import Repo from './containers/repo.jsx'
+import Application from './containers/Application'
+import Home from './containers/Home'
+import User from './containers/User'
+import Repo from './containers/Repo'
 
 
 export const routes = [{

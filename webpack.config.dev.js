@@ -15,7 +15,7 @@ var config = {
   module: {
     loaders: [
       //JSX
-      { test: /\.jsx?$/, loaders: [ 'babel'] },
+      { test: /\.js?$/, loaders: [ 'babel'] },
       { test: /\.scss$/, loader: "style!css!sass?outputStyle=expanded" },
       { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,   loader: "url?limit=10000&mimetype=application/font-woff" },
       { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,  loader: "url?limit=10000&mimetype=application/font-woff" },

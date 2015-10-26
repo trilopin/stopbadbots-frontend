@@ -1,5 +1,5 @@
-import { PROJECT_LIST_FETCHED, PROJECT_LIST_REQUESTED, PROJECT_LIST_FAILED } from '../constants.jsx'
-import createReducer from '../util/create-reducer.jsx'
+import { PROJECT_LIST_FETCHED, PROJECT_LIST_REQUESTED, PROJECT_LIST_FAILED } from '../constants'
+import createReducer from '../util/create-reducer'
 
 const initialState = {
   projects: {

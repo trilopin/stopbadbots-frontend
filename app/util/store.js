@@ -2,11 +2,11 @@ import { createStore, combineReducers, compose, applyMiddleware } from 'redux'
 import { reduxReactRouter, routerStateReducer } from 'redux-router'
 import createHistory from 'history/lib/createHashHistory'
 import thunk from 'redux-thunk'
-import { project } from '../reducers/project.js'
-import { auth } from '../reducers/auth.js'
-import DevTools from '../containers/DevTools.js'
+import { project } from '../reducers/project'
+import { auth } from '../reducers/auth'
+import DevTools from '../containers/DevTools'
 import { persistState } from 'redux-devtools'
-import { routes } from  '../routes.jsx'
+import { routes } from  '../routes'
 
 
 const reducer = combineReducers({

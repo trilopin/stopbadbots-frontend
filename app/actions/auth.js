@@ -1,7 +1,7 @@
 import 'whatwg-fetch'
-import { SBB_APIURL, SBB_APIAUTH } from  '../config.js'
-import { LOGIN_SUCCEDED, LOGIN_FAILED, LOGIN_REQUESTED } from '../constants.jsx'
-import { fetchProjects } from './project.jsx'
+import { SBB_APIURL, SBB_APIAUTH } from  '../config'
+import { LOGIN_SUCCEDED, LOGIN_FAILED, LOGIN_REQUESTED } from '../constants'
+import { fetchProjects } from './project'
 
 export function login (parameters) {
   const { name, password } = parameters

@@ -1,5 +1,5 @@
-import { LOGIN_SUCCEDED, LOGIN_FAILED, LOGIN_REQUESTED } from '../constants.jsx'
-import createReducer from '../util/create-reducer.jsx'
+import { LOGIN_SUCCEDED, LOGIN_FAILED, LOGIN_REQUESTED } from '../constants'
+import createReducer from '../util/create-reducer'
 
 const initialState = {
   auth: {

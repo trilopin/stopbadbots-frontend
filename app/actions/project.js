@@ -1,6 +1,6 @@
 import 'whatwg-fetch'
-import { SBB_APIURL, SBB_APIAUTH } from  '../config.js'
-import { PROJECT_LIST_FETCHED } from '../constants.jsx'
+import { SBB_APIURL, SBB_APIAUTH } from  '../config'
+import { PROJECT_LIST_FETCHED } from '../constants'
 
 
 export function fetchProjects (parameters) {
