@@ -1,26 +1,47 @@
+import React from 'react';
+import {IndexRoute, Route} from 'react-router';
+/*import { isLoaded as isAuthLoaded, load as loadAuth } from 'redux/modules/auth';*/
 import {
     Application,
+    LoggedApplication,
     Projects,
     Features,
     Data,
     Events,
     Predictions,
     Settings,
-    NotFound
+    NotFound,
+    Login
     } from './containers'
 
 
+export default (store) => {
+  const requireLogin = (nextState, replaceState, cb) => {
+    const { auth: { token }} = store.getState();
+    if (!token) {
+        replaceState(null, '/login');
+    }
+    cb();
+  };
 
-export const routes = [{
-    component: Application,
-    childRoutes: [
-        { path: '/', component: Projects },
-        { path: ':user/:project/data', component: Data },
-        { path: ':user/:project/features', component: Features },
-        { path: ':user/:project/events', component: Events },
-        { path: ':user/:project/predictions', component: Predictions },
-        { path: ':user/:project/settings', component: Settings },
-        { path: "*", component: NotFound }
-    ]
-}];
+  const fake = (nextState, replaceState, cb) => {
+    cb();
+  };
 
+  return (
+    <Route path="/" component={Application}>
+        <Route component={LoggedApplication}>
+            <Route path=":user/" component={Projects} /> /*temporary without requireLogin*/
+            <Route onEnter={requireLogin}>
+                <Route path=":user/:project/data" component={Data}/>
+                <Route path=":user/:project/features" component={Features}/>
+                <Route path=":user/:project/events" component={Events}/>
+                <Route path=":user/:project/predictions" component={Predictions}/>
+                <Route path=":user/:project/settings" component={Settings}/>
+            </Route>
+        </Route>
+        <Route path="/login" component={Login} />
+        <Route path="*" component={NotFound} status={404}/>
+    </Route>
+  );
+};
