@@ -24,13 +24,9 @@ export default (store) => {
     cb();
   };
 
-  const fake = (nextState, replaceState, cb) => {
-    cb();
-  };
-
   return (
-    <Route path="/" component={Application}>
-        <Route component={LoggedApplication}>
+    <Route>
+        <Route path="/" component={Application}>
             <Route path=":user/" component={Projects} /> /*temporary without requireLogin*/
             <Route onEnter={requireLogin}>
                 <Route path=":user/:project/data" component={Data}/>

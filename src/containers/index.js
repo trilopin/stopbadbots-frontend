@@ -1,5 +1,4 @@
 export Application from './Application/Application';
-export LoggedApplication from './LoggedApplication/LoggedApplication';
 export Projects from './Projects/Projects';
 export Settings from './Settings/Settings';
 export Data from './Data/Data';

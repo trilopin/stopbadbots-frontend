@@ -22,6 +22,7 @@ export function login (parameters) {
     .then(res => {
       dispatch( { type: LOGIN_SUCCEDED, token: res.auth_token } )
       dispatch( fetchProjects({ token: res.auth_token }) )
+      this.context.router.transitionTo(`/{name}/`)
     })
   }
 }
