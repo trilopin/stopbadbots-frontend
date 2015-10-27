@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import { Redirect, Route } from 'react-router'
 import { ReduxRouter } from 'redux-router'
 import makeStore from './util/store';
-import DevTools from './containers/DevTools'
+import { DevTools } from './containers/'
 import './scss/main.scss';
 
 const initialState = {

@@ -7,7 +7,7 @@ module.exports = {
   // Use bootstrapCustomizations to utilize other sass variables defined in
   // preBootstrapCustomizations or the _variables.scss file. This is useful to set one
   // customization value based on another value.
-  bootstrapCustomizations: "./app/bootstrap-customizations.scss",
+  bootstrapCustomizations: "./src/bootstrap-customizations.scss",
 
   //mainSass: './_main.scss',
 

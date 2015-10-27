@@ -2,26 +2,25 @@ import { PROJECT_LIST_FETCHED, PROJECT_LIST_REQUESTED, PROJECT_LIST_FAILED } fro
 import createReducer from '../util/create-reducer'
 
 const initialState = {
-  projects: {
-    items: {},
-    isFetching: false,
-    lastUpdated: null
-  }
+  items: {},
+  isFetching: false,
+  lastUpdated: null
 }
 
 const actionHandlers = {
   [PROJECT_LIST_FETCHED]: (state, action) => (
     {
-      projects: Object.assign({}, state.projects, {
-        items: action.items,
-        lastUpdated: Date.now()
-      })
+      items: action.items,
+      lastUpdated: Date.now(),
+      isFetching: false
     }),
   [PROJECT_LIST_REQUESTED]: (state, action) => (
     {
-      projects: Object.assign({}, state.projects, {
-        isFetching: true
-      })
+      isFetching: true
+    }),
+  [PROJECT_LIST_FAILED]: (state, action) => (
+    {
+      isFetching: false
     }),
 }
 

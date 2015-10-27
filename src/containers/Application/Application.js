@@ -1,8 +1,7 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux';
-import Header from '../components/Header'
-import Footer from '../components/Footer'
-import { login } from '../actions/auth';
+import { login } from '../../actions/auth';
+import { Header, Footer } from '../../components/'
 
 
 
@@ -28,12 +27,9 @@ export default class Application extends React.Component {
     return (
       <div id="layout">
         <Header/>
-
         <div id="main">
-          {/* this will render the child routes */}
           {this.props.children}
         </div>
-
         <Footer />
       </div>
     )

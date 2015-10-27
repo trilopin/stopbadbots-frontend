@@ -20,7 +20,7 @@ export function login (parameters) {
     })
     .then(res => res.json())
     .then(res => {
-      dispatch( { type: LOGIN_SUCCEDED,token: res.auth_token } )
+      dispatch( { type: LOGIN_SUCCEDED, token: res.auth_token } )
       dispatch( fetchProjects({ token: res.auth_token }) )
     })
   }
