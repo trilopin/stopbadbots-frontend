@@ -1,13 +1,15 @@
 import React, { PropTypes } from 'react'
-export default class Home extends React.Component {
+
+export default class Data extends React.Component {
 
   constructor (props) {
     super(props)
   }
 
   render () {
+    const {user, project} = this.props.params;
     return <div className="row">
-        home
+      <h4>Data</h4>
     </div>
 
   }

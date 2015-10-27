@@ -1,15 +1,15 @@
 import React, { PropTypes } from 'react'
 
-export default class Repo extends React.Component {
+export default class Predictions extends React.Component {
 
   constructor (props) {
     super(props)
   }
 
   render () {
-    const {user, repo} = this.props.params;
+    const {user, project} = this.props.params;
     return <div className="row">
-      Repository {user}/{repo}
+      <h4>Predictions</h4>
     </div>
 
   }

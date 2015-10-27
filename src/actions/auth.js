@@ -6,7 +6,7 @@ import { fetchProjects } from './project'
 export function login (parameters) {
   const { name, password } = parameters
   return dispatch => {
-    dispatch( { type: LOGIN_REQUESTED } );
+    dispatch( { type: LOGIN_REQUESTED, username: name } );
     fetch(`${SBB_APIURL}/v1/auth/`, {
       method: 'post',
       headers: {

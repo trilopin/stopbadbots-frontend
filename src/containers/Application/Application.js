@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux';
 import { login } from '../../actions/auth';
-import { Header, Footer } from '../../components/'
+import { Header, Footer, Sidebar } from '../../components/'
 
 
 
@@ -27,6 +27,7 @@ export default class Application extends React.Component {
     return (
       <div id="layout">
         <Header/>
+        <Sidebar user={this.props.auth.username} project='citiservi_es'/>
         <div id="main">
           {this.props.children}
         </div>

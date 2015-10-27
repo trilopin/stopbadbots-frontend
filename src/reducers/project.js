@@ -4,7 +4,8 @@ import createReducer from '../util/create-reducer'
 const initialState = {
   items: {},
   isFetching: false,
-  lastUpdated: null
+  currentProject: null,
+  lastUpdated: null,
 }
 
 const actionHandlers = {

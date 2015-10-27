@@ -3,6 +3,7 @@ import createReducer from '../util/create-reducer'
 
 const initialState = {
   token: null,
+  username: null,
   isFetching: false
 }
 
@@ -14,11 +15,13 @@ const actionHandlers = {
     }),
   [LOGIN_REQUESTED]: (state, action) => (
     {
-        isFetching: true
+        isFetching: true,
+        username: action.username
     }),
   [LOGIN_FAILED]: (state, action) => (
     {
-        isFetching: false
+        isFetching: false,
+        username: null
     }),
 }
 
