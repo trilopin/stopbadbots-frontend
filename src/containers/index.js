@@ -8,3 +8,4 @@ export Predictions from './Predictions/Predictions';
 export DevTools from './DevTools/DevTools';
 export NotFound from './NotFound/NotFound';
 export Login from './Login/Login';
+export Logout from './Logout/Logout';

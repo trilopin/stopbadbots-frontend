@@ -1,4 +1,8 @@
-import { LOGIN_SUCCEDED, LOGIN_FAILED, LOGIN_REQUESTED } from '../constants'
+import {
+  LOGIN_SUCCEDED,
+  LOGIN_FAILED,
+  LOGIN_REQUESTED,
+  LOGOUT_REQUESTED } from '../constants'
 import createReducer from '../util/create-reducer'
 
 const initialState = {
@@ -22,6 +26,12 @@ const actionHandlers = {
     {
         isFetching: false,
         username: null
+    }),
+  [LOGOUT_REQUESTED]: (state, action) => (
+    {
+        isFetching: true,
+        username: null,
+        token: null
     }),
 }
 

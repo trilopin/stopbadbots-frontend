@@ -11,13 +11,15 @@ import {
     Predictions,
     Settings,
     NotFound,
-    Login
+    Login,
+    Logout
     } from './containers'
 
 
 export default (store) => {
   const requireLogin = (nextState, replaceState, cb) => {
     const { auth: { token }} = store.getState();
+    console.log('requireLogin')
     if (!token) {
         replaceState(null, '/login');
     }
@@ -27,7 +29,7 @@ export default (store) => {
   return (
     <Route>
         <Route path="/" component={Application}>
-            <Route path=":user/" component={Projects} /> /*temporary without requireLogin*/
+            <Route path=":user/" component={Projects} />
             <Route onEnter={requireLogin}>
                 <Route path=":user/:project/data" component={Data}/>
                 <Route path=":user/:project/features" component={Features}/>
@@ -37,6 +39,7 @@ export default (store) => {
             </Route>
         </Route>
         <Route path="/login" component={Login} />
+        <Route path="/logout" component={Logout} />
         <Route path="*" component={NotFound} status={404}/>
     </Route>
   );

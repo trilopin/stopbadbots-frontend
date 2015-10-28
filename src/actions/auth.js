@@ -1,7 +1,7 @@
 import 'whatwg-fetch'
 import { pushState } from 'redux-router'
 import { SBB_APIURL, SBB_APIAUTH } from  '../config'
-import { LOGIN_SUCCEDED, LOGIN_FAILED, LOGIN_REQUESTED } from '../constants'
+import { LOGIN_SUCCEDED, LOGIN_FAILED, LOGIN_REQUESTED, LOGOUT_REQUESTED } from '../constants'
 import { fetchProjects } from './project'
 
 export function login (parameters) {
@@ -28,3 +28,10 @@ export function login (parameters) {
   }
 }
 
+export function logout (parameters) {
+  const { redirect } = parameters
+  return dispatch => {
+    dispatch( { type: LOGOUT_REQUESTED } );
+    redirect()
+  }
+}
