@@ -28,9 +28,9 @@ export default (store) => {
 
   return (
     <Route>
-        <Route path="/" component={Application}>
-            <Route path=":user/" component={Projects} />
+        <Route component={Application}>
             <Route onEnter={requireLogin}>
+                <Route path="/projects" component={Projects} />
                 <Route path=":user/:project/data" component={Data}/>
                 <Route path=":user/:project/features" component={Features}/>
                 <Route path=":user/:project/events" component={Events}/>
