@@ -1,7 +1,23 @@
 import React, { PropTypes, Component} from 'react';
 import { reduxForm } from 'redux-form';
+import './LoginForm.scss';
 
-export const fields = ['userName', 'password'];
+
+
+const validate = values => {
+  const errors = {};
+  if (!values.username) {
+    errors.username = 'Required';
+  }
+  if (!values.password) {
+    errors.password = 'Required';
+  }
+  return errors;
+};
+
+
+
+export const fields = ['username', 'password'];
 class LoginForm extends Component {
 
   static propTypes = {
@@ -11,29 +27,33 @@ class LoginForm extends Component {
 
   render () {
     const {
-      fields: {userName, password},
+      fields: {username, password},
       handleSubmit,
       resetForm
       } = this.props;
-    return <form onSubmit={handleSubmit}>
-      <div>
-        <label>User Name</label>
-        <div>
-          <input type="text" placeholder="UserName" {...userName}/>
+    return (
+      <form className="form-signin" onSubmit={handleSubmit}>
+        <h2 className="form-signin-heading">Please sign in</h2>
+        <div className={username.touched && username.error && "has-error"}>
+          <input type="text" className="form-control" placeholder="User Name" {...username} />
         </div>
+        <div className={password.touched && password.error && "has-error"}>
+          <input type="password" id="password" className="form-control" placeholder="Password" required="" {...password} />
         </div>
-        <div>
-          <label>Password</label>
-          <div>
-            <input type="text" placeholder="Password" {...password}/>
-          </div>
+        <div className="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me" /> Remember me
+          </label>
         </div>
-      <button type='submit'>Submit</button>
-    </form>
+        <button className="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      </form>
+    )
+
   }
 }
 
 export default reduxForm({
   form: 'login',
-  fields
+  fields,
+  validate
 })(LoginForm);
