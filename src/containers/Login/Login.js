@@ -1,9 +1,11 @@
 import React, { PropTypes, Component} from 'react';
 import { connect } from 'react-redux';
 import { login } from '../../actions/auth';
+import { LoginForm } from '../../components';
 
 @connect((state, props) => {
   return {
+    login: state.form.login,
     auth: state.auth
   }
 })
@@ -15,18 +17,18 @@ export default class Login extends Component {
 
   constructor (props) {
     super(props)
-    this.handleClick = this.handleClick.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
 
-  handleClick (e) {
-    e.preventDefault();
+  handleSubmit () {
+    const {username, password} = this.props.login;
     const {history} = this.context;
     const params = {
-        name: 'jmpeso',
-        password: '1234',
+        name: username.value,
+        password: password.value,
         redirect: () => {
-            history.pushState({}, '/jmpeso/')
+            history.pushState({}, '/projects')
         }
     };
     this.props.dispatch(login(params));
@@ -35,8 +37,7 @@ export default class Login extends Component {
   render () {
     return (
       <div className="container">
-        <h1>Login</h1>
-        <button className="btn btn-primary" onClick={this.handleClick}>Login</button>
+        <LoginForm failed={this.props.auth.failed} onSubmit={this.handleSubmit}/>
       </div>
     );
   }

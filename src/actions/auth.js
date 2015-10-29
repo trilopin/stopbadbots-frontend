@@ -19,11 +19,20 @@ export function login (parameters) {
         password: password,
       })
     })
-    .then(res => res.json())
     .then(res => {
-      dispatch( { type: LOGIN_SUCCEDED, token: res.auth_token } )
-      dispatch( fetchProjects({ token: res.auth_token }) )
-      redirect()
+      if(res.status===200) {
+        res.json()
+      } else {
+        dispatch( { type: LOGIN_FAILED } )
+      }
+
+    })
+    .then(res => {
+      if(res) {
+        dispatch( { type: LOGIN_SUCCEDED, token: res.auth_token } )
+        dispatch( fetchProjects({ token: res.auth_token }) )
+        redirect()
+      }
     })
   }
 }
