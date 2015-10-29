@@ -19,7 +19,6 @@ import {
 export default (store) => {
   const requireLogin = (nextState, replaceState, cb) => {
     const { auth: { token }} = store.getState();
-    console.log('requireLogin')
     if (!token) {
         replaceState(null, '/login');
     }
