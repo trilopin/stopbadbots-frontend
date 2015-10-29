@@ -5,7 +5,8 @@ import { LoginForm } from '../../components';
 
 @connect((state, props) => {
   return {
-    login: state.form.login
+    login: state.form.login,
+    auth: state.auth
   }
 })
 export default class Login extends Component {
@@ -36,7 +37,7 @@ export default class Login extends Component {
   render () {
     return (
       <div className="container">
-        <LoginForm onSubmit={this.handleSubmit}/>
+        <LoginForm failed={this.props.auth.failed} onSubmit={this.handleSubmit}/>
       </div>
     );
   }

@@ -34,6 +34,7 @@ class LoginForm extends Component {
     return (
       <form className="form-signin" onSubmit={handleSubmit}>
         <h2 className="form-signin-heading">Please sign in</h2>
+        <h3>{this.props.failed && "User/password are invalid"}</h3>
         <div className={username.touched && username.error && "has-error"}>
           <input type="text" className="form-control" placeholder="User Name" {...username} />
         </div>
