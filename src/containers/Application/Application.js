@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 
 @connect((state, props) => {
   return {
-    auth: state.auth
+    auth: state.auth,
+    location: state.router.location.pathname
   }
 })
 export default class Application extends React.Component {
@@ -13,8 +14,8 @@ export default class Application extends React.Component {
 
     return (
       <div id="layout">
-        <Header/>
-        <Sidebar user={this.props.auth.username} project='citiservi_es'/>
+        <Header location={this.props.location}/>
+        <Sidebar user={this.props.auth.username} project='citiservi_es' location={this.props.location}/>
         <div id="main">
           {this.props.children}
         </div>
