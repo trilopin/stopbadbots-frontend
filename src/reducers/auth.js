@@ -16,7 +16,8 @@ const actionHandlers = {
   [LOGIN_SUCCEDED]: (state, action) => (
     {
         token: action.token,
-        isFetching: false
+        isFetching: false,
+        failed: false
     }),
   [LOGIN_REQUESTED]: (state, action) => (
     {
@@ -32,7 +33,7 @@ const actionHandlers = {
     }),
   [LOGOUT_REQUESTED]: (state, action) => (
     {
-        isFetching: true,
+        isFetching: false,
         username: null,
         token: null
     }),

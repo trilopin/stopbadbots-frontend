@@ -20,19 +20,21 @@ export function login (parameters) {
       })
     })
     .then(res => {
-      if(res.status===200) {
-        res.json()
+      let json = res.json()
+      if(res.status === 200) {
+        return json
       } else {
         dispatch( { type: LOGIN_FAILED } )
+        return json.then(Promise.reject.bind(Promise));
       }
-
     })
     .then(res => {
-      if(res) {
-        dispatch( { type: LOGIN_SUCCEDED, token: res.auth_token } )
-        dispatch( fetchProjects({ token: res.auth_token }) )
-        redirect()
-      }
+      dispatch( { type: LOGIN_SUCCEDED, token: res.auth_token } )
+      dispatch( fetchProjects({ token: res.auth_token }) )
+      redirect()
+    })
+    .catch( ex => {
+      dispatch( { type: LOGIN_FAILED } )
     })
   }
 }
