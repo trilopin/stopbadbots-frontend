@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
+import './Sidebar.scss';
 
 
 export default class Sidebar extends React.Component {
@@ -19,7 +20,6 @@ export default class Sidebar extends React.Component {
 
 
   renderLinks(user, project) {
-
     const links = [
         { anchor: "Data", href: `/${user}/${project}/data` },
         { anchor: "Features", href: `/${user}/${project}/features` },
@@ -28,7 +28,11 @@ export default class Sidebar extends React.Component {
         { anchor: "Settings", href: `/${user}/${project}/settings` },
     ];
     return links.map( (link) =>
-      <li key={"sidebar_link"+link.href}><Link to={link.href}>{link.anchor}</Link></li>
+      <li
+        key={"sidebar_link"+link.href}
+        className={this.props.location == link.href && "active"}>
+        <Link to={link.href}>{link.anchor}</Link>
+      </li>
     )
   }
 }

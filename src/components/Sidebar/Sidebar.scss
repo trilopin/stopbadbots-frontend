@@ -1,0 +1,20 @@
+#sidebar {
+    background-color: #484141;
+    height: 100%;
+    border-color: #484141;
+    padding: 50px 0 0 0;
+
+
+    ul.nav > li > a {
+        color: white;
+    }
+
+    ul.nav > li.active > a {
+        border-right: 5px solid green;
+        background-color: #908888;
+    }
+
+    ul.nav > li > a:hover {
+        background-color: #908888;
+    }
+}
