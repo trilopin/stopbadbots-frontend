@@ -13,14 +13,20 @@ export default class Application extends React.Component {
   render() {
 
     return (
-      <div id="layout">
-        <Header location={this.props.location}/>
-        <Sidebar user={this.props.auth.username} project='citiservi_es' location={this.props.location}/>
-        <div id="main">
-          {this.props.children}
-        </div>
-        <Footer />
+      <div className="wrapper">
+          <div className="box">
+            <div className="row row-offcanvas row-offcanvas-left">
+              <Sidebar user={this.props.auth.username} project='citiservi_es' location={this.props.location}/>
+              <div className="column col-sm-10 col-xs-11" id="main">
+                <Header location={this.props.location}/>
+                <div id="main">
+                  {this.props.children}
+                </div>
+              </div>
+            </div>
+          </div>
       </div>
     )
   }
 }
+              // <Footer />

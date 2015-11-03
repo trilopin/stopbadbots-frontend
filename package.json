@@ -15,7 +15,7 @@
     "node-sass": "~3.3.3",
     "sass-loader": "~3.0.0",
     "babel-runtime": "^5.8.25",
-    "classnames": "^2.2.0",
+    "classnames": "~2.2.0",
     "history": "~1.12.5",
     "normalize.css": "^3.0.3",
     "parse-link-header": "^0.4.1",
