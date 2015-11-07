@@ -4,21 +4,14 @@ import classNames from 'classnames'
 import './Sidebar.scss';
 
 
+
 export default class Sidebar extends React.Component {
 
   constructor (props) {
     super(props)
-    this.toogleSidebar = this.toogleSidebar.bind(this)
-    this.state = {
-      sidebarOpened: true
-    }
-    console.log(this.state)
   }
 
-  toogleSidebar(e) {
-    e.preventDefault()
-    this.setState({sidebarOpened: true})
-  }
+
 /*
 $('[data-toggle=offcanvas]').click(function() {
     $(this).toggleClass('visible-xs text-center');
@@ -31,26 +24,24 @@ $('[data-toggle=offcanvas]').click(function() {
 */
   render () {
     const {user, project} = this.props;
-    let hidden_xs = this.state.sidebarOpened ? 'hidden-xs' : '';
-    let visible_xs = this.state.sidebarOpened ? 'visible-xs' : '';
     return  (
-      <div className="column col-sm-2 col-xs-1 sidebar-offcanvas" id="sidebar">
+      <div className={"column sidebar-offcanvas " +(!this.props.sidebarForceOpened ? "col-xs-1" : "col-xs-2")} id="sidebar">
         <ul className="nav">
           <li>
-            <a href="#" className="visible-xs text-center" onClick={this.toogleSidebar}>
-              <i className="glyphicon glyphicon-chevron-right"></i>
+            <a href="#" className="text-left" onClick={this.props.toogleSidebar}>
+              <i className={"glyphicon "+ (!this.props.sidebarForceOpened ? "glyphicon-chevron-left" : "glyphicon-chevron-right")}></i>
             </a>
           </li>
         </ul>
-        <ul className={"nav " + hidden_xs} id="lg-menu">
+        <ul className={"nav " + (!this.props.sidebarForceOpened ? "hidden-xs" : "visible-xs")} id="lg-menu">
           {this.renderLinks(user, project, false)}
         </ul>
         <ul className="list-unstyled hidden-xs" id="sidebar-footer">
           <li>
-            <a href="http://www.bootply.com"><h3>STOPBADBOTS</h3></a>
+            <a href="#"><h3>SBB</h3></a>
           </li>
         </ul>
-        <ul className={"nav " + visible_xs} id="xs-menu">
+        <ul className={"nav " + (!this.props.sidebarForceOpened ? "visible-xs": "hidden-xs")} id="xs-menu">
           {this.renderLinks(user, project, true)}
         </ul>
       </div>
