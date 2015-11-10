@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 import classNames from 'classnames'
 import './Sidebar.scss';
-
+import userPicture from '../../../assets/img/user2-160x160.jpg'
 
 
 export default class Sidebar extends React.Component {
@@ -24,28 +24,43 @@ $('[data-toggle=offcanvas]').click(function() {
 */
   render () {
     const {user, project} = this.props;
-    return  (
-      <div className={"column sidebar-offcanvas " +(!this.props.sidebarForceOpened ? "col-xs-1" : "col-xs-2")} id="sidebar">
-        <ul className="nav">
-          <li>
-            <a href="#" className="text-left" onClick={this.props.toogleSidebar}>
-              <i className={"glyphicon "+ (!this.props.sidebarForceOpened ? "glyphicon-chevron-left" : "glyphicon-chevron-right")}></i>
-            </a>
+    return <aside className="main-sidebar">
+      <section className="sidebar">
+
+        <div className="user-panel">
+          <div className="pull-left image">
+            <img src={ userPicture } className="img-circle" alt="User Image"/>
+          </div>
+          <div className="pull-left info">
+            <p>Alexander Pierce</p>
+            <a href="#"><i className="fa fa-circle text-success"></i> Online</a>
+          </div>
+        </div>
+
+        <form action="#" method="get" className="sidebar-form">
+          <div className="input-group">
+            <input type="text" name="q" className="form-control" placeholder="Search..."/>
+            <span className="input-group-btn">
+              <button type="submit" name="search" id="search-btn" className="btn btn-flat"><i className="fa fa-search"></i>
+              </button>
+            </span>
+          </div>
+        </form>
+
+        <ul className="sidebar-menu">
+          <li className="header">HEADER</li>
+          <li className="active"><a href="#"><i className="fa fa-link"></i> <span>Link</span></a></li>
+          <li><a href="#"><i className="fa fa-link"></i> <span>Another Link</span></a></li>
+          <li className="treeview">
+            <a href="#"><i className="fa fa-link"></i> <span>Multilevel</span> <i className="fa fa-angle-left pull-right"></i></a>
+            <ul className="treeview-menu">
+              <li><a href="#">Link in level 2</a></li>
+              <li><a href="#">Link in level 2</a></li>
+            </ul>
           </li>
         </ul>
-        <ul className={"nav " + (!this.props.sidebarForceOpened ? "hidden-xs" : "visible-xs")} id="lg-menu">
-          {this.renderLinks(user, project, false)}
-        </ul>
-        <ul className="list-unstyled hidden-xs" id="sidebar-footer">
-          <li>
-            <a href="#"><h3>SBB</h3></a>
-          </li>
-        </ul>
-        <ul className={"nav " + (!this.props.sidebarForceOpened ? "visible-xs": "hidden-xs")} id="xs-menu">
-          {this.renderLinks(user, project, true)}
-        </ul>
-      </div>
-    )
+      </section>
+    </aside>
   }
 
   renderLinks(user, project, tiny) {

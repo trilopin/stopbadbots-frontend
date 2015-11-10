@@ -7,11 +7,12 @@ export default class Footer extends React.Component {
   }
 
   render () {
-    return <div className="row" id="footer">
-        <div className="container-fluid">
-        <p>Footer de app.</p>
-        </div>
-    </div>
+    return <footer className="main-footer">
+      <div className="pull-right hidden-xs">
+        Anything you want
+      </div>
+      <strong>Copyright &copy; 2015 <a href="#">Company</a>.</strong> All rights reserved.
+    </footer>
 
   }
 }
