@@ -12,16 +12,6 @@ export default class Sidebar extends React.Component {
   }
 
 
-/*
-$('[data-toggle=offcanvas]').click(function() {
-    $(this).toggleClass('visible-xs text-center');
-    $(this).find('i').toggleClass('glyphicon-chevron-right glyphicon-chevron-left');
-    $('.row-offcanvas').toggleClass('active');
-    $('#lg-menu').toggleClass('hidden-xs').toggleClass('visible-xs');
-    $('#xs-menu').toggleClass('visible-xs').toggleClass('hidden-xs');
-    $('#btnShow').toggle();
-});
-*/
   render () {
     const {user, project} = this.props;
     return <aside className="main-sidebar">
@@ -49,37 +39,41 @@ $('[data-toggle=offcanvas]').click(function() {
 
         <ul className="sidebar-menu">
           <li className="header">HEADER</li>
-          <li className="active"><a href="#"><i className="fa fa-link"></i> <span>Link</span></a></li>
-          <li><a href="#"><i className="fa fa-link"></i> <span>Another Link</span></a></li>
-          <li className="treeview">
-            <a href="#"><i className="fa fa-link"></i> <span>Multilevel</span> <i className="fa fa-angle-left pull-right"></i></a>
-            <ul className="treeview-menu">
-              <li><a href="#">Link in level 2</a></li>
-              <li><a href="#">Link in level 2</a></li>
-            </ul>
-          </li>
+          {this.renderLinks(user, project)}
+          // <li className="treeview">
+          //   <a href="#"><i className="fa fa-link"></i> <span>Multilevel</span> <i className="fa fa-angle-left pull-right"></i></a>
+          //   <ul className="treeview-menu">
+          //     <li><a href="#">Link in level 2</a></li>
+          //     <li><a href="#">Link in level 2</a></li>
+          //   </ul>
+          // </li>
         </ul>
       </section>
     </aside>
   }
 
-  renderLinks(user, project, tiny) {
+  renderLinks(user, project) {
     const links = [
-        { anchor: "Data", href: `/${user}/${project}/data`, className: "glyphicon glyphicon-list-alt" },
-        { anchor: "Features", href: `/${user}/${project}/features`, className: "glyphicon glyphicon-signal" },
-        { anchor: "Predictions", href: `/${user}/${project}/predictions`, className: "glyphicon glyphicon-flash" },
-        { anchor: "Events", href: `/${user}/${project}/events`, className: "glyphicon glyphicon-alert" },
-        { anchor: "Settings", href: `/${user}/${project}/settings`, className: "glyphicon glyphicon-cog" },
+        { anchor: "Data", href: `/${user}/${project}/data`, className: "fa fa-table" },
+        { anchor: "Features", href: `/${user}/${project}/features`, className: "fa fa-signal" },
+        { anchor: "Predictions", href: `/${user}/${project}/predictions`, className: "fa fa-rocket" },
+        { anchor: "Events", href: `/${user}/${project}/events`, className: "fa fa-exclamation-triangle" },
+        { anchor: "Settings", href: `/${user}/${project}/settings`, className: "fa fa-cogs" },
     ];
     return links.map( (link) =>
       <li
         key={"sidebar_link"+link.href}
         className={classNames({'active': this.props.location == link.href})}>
-        <Link to={link.href} className={classNames({'text-center': tiny})}>
-          <i className={link.className}></i> {!tiny && link.anchor}
+        <Link to={link.href}>
+          <i className={link.className}></i>
+          <span>{link.anchor}</span>
         </Link>
       </li>
     )
+  }
+
+  renderSettingsLink() {
+
   }
 }
 

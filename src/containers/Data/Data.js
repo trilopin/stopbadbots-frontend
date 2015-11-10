@@ -8,7 +8,7 @@ export default class Data extends React.Component {
 
   render () {
     const {user, project} = this.props.params;
-    return <div className="row">
+    return <div className="col-xs-12">
       <h4>Data</h4>
     </div>
 

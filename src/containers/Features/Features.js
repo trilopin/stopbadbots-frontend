@@ -11,7 +11,7 @@ export default class Features extends React.Component {
 
   render () {
     const {user, project} = this.props.params;
-    return <div className="row">
+    return <div className="col-xs-12">
       <h4>Features</h4>
     </div>
 
