@@ -1,4 +1,6 @@
 import React, { PropTypes } from 'react'
+import { ContentHeader } from '../../components'
+
 
 export default class Projects extends React.Component {
 
@@ -7,8 +9,12 @@ export default class Projects extends React.Component {
   }
 
   render () {
-    return <div className="row">
-        Projects
+    return <div>
+        <ContentHeader
+            title="Projects"
+            subtitle="Choose one of your projects and start enjoing"/>
+        <section className="content">
+        </section>
     </div>
 
   }

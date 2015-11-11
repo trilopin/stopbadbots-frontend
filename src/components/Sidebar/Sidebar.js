@@ -14,6 +14,16 @@ export default class Sidebar extends React.Component {
 
   render () {
     const {user, project} = this.props;
+    const globalLinks = [
+      { anchor: "Projects", href: `/projects`, className: "fa fa-list-ul" },
+    ]
+    const projectLinks = [
+      { anchor: "Data", href: `/${user}/${project}/data`, className: "fa fa-table" },
+      { anchor: "Features", href: `/${user}/${project}/features`, className: "fa fa-signal" },
+      { anchor: "Predictions", href: `/${user}/${project}/predictions`, className: "fa fa-rocket" },
+      { anchor: "Events", href: `/${user}/${project}/events`, className: "fa fa-exclamation-triangle" },
+      { anchor: "Settings", href: `/${user}/${project}/settings`, className: "fa fa-cogs" },
+    ]
     return <aside className="main-sidebar">
       <section className="sidebar">
 
@@ -22,59 +32,53 @@ export default class Sidebar extends React.Component {
             <img src={ userPicture } className="img-circle" alt="User Image"/>
           </div>
           <div className="pull-left info">
-            <p>Alexander Pierce</p>
+            <p>{ user }</p>
             <a href="#"><i className="fa fa-circle text-success"></i> Online</a>
           </div>
         </div>
 
-        <form action="#" method="get" className="sidebar-form">
-          <div className="input-group">
-            <input type="text" name="q" className="form-control" placeholder="Search..."/>
-            <span className="input-group-btn">
-              <button type="submit" name="search" id="search-btn" className="btn btn-flat"><i className="fa fa-search"></i>
-              </button>
-            </span>
-          </div>
-        </form>
 
-        <ul className="sidebar-menu">
-          <li className="header">HEADER</li>
-          {this.renderLinks(user, project)}
-          // <li className="treeview">
-          //   <a href="#"><i className="fa fa-link"></i> <span>Multilevel</span> <i className="fa fa-angle-left pull-right"></i></a>
-          //   <ul className="treeview-menu">
-          //     <li><a href="#">Link in level 2</a></li>
-          //     <li><a href="#">Link in level 2</a></li>
-          //   </ul>
-          // </li>
-        </ul>
+
+        <SidebarMenu
+          location={ location }
+          header="GLOBAL"
+          links={ globalLinks } />
+
+        <SidebarMenu
+          location={ location }
+          header={ project.toUpperCase() }
+          links={ projectLinks } />
+
       </section>
     </aside>
   }
+}
 
-  renderLinks(user, project) {
-    const links = [
-        { anchor: "Data", href: `/${user}/${project}/data`, className: "fa fa-table" },
-        { anchor: "Features", href: `/${user}/${project}/features`, className: "fa fa-signal" },
-        { anchor: "Predictions", href: `/${user}/${project}/predictions`, className: "fa fa-rocket" },
-        { anchor: "Events", href: `/${user}/${project}/events`, className: "fa fa-exclamation-triangle" },
-        { anchor: "Settings", href: `/${user}/${project}/settings`, className: "fa fa-cogs" },
-    ];
-    return links.map( (link) =>
+
+
+class SidebarMenu extends React.Component {
+
+  constructor (props) {
+    super(props)
+  }
+
+  render() {
+    const {location, header, links} = this.props
+    const items = links.map( (link) =>
       <li
         key={"sidebar_link"+link.href}
-        className={classNames({'active': this.props.location == link.href})}>
+        className={classNames({'active': location == link.href})}>
         <Link to={link.href}>
           <i className={link.className}></i>
           <span>{link.anchor}</span>
         </Link>
       </li>
     )
+
+    return <ul className="sidebar-menu">
+      <li className="header">{ header }</li>
+      { items }
+    </ul>
   }
 
-  renderSettingsLink() {
-
-  }
 }
-
-
