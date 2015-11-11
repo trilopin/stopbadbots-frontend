@@ -27,16 +27,7 @@ export default class Sidebar extends React.Component {
     return <aside className="main-sidebar">
       <section className="sidebar">
 
-        <div className="user-panel">
-          <div className="pull-left image">
-            <img src={ userPicture } className="img-circle" alt="User Image"/>
-          </div>
-          <div className="pull-left info">
-            <p>{ user }</p>
-            <a href="#"><i className="fa fa-circle text-success"></i> Online</a>
-          </div>
-        </div>
-
+        <SidebarUser user={user}/>
 
 
         <SidebarMenu
@@ -55,6 +46,25 @@ export default class Sidebar extends React.Component {
 }
 
 
+
+class SidebarUser extends React.Component {
+  constructor (props) {
+    super(props)
+  }
+
+  render() {
+    const { user } = this.props;
+    return <div className="user-panel">
+      <div className="pull-left image">
+        <img src={ userPicture } className="img-circle" alt="User Image"/>
+      </div>
+      <div className="pull-left info">
+        <p>{ user }</p>
+        <a href="#"><i className="fa fa-circle text-success"></i> Online</a>
+      </div>
+    </div>
+  }
+}
 
 class SidebarMenu extends React.Component {
 

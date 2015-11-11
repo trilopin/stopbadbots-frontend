@@ -1,7 +1,5 @@
 import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
-
-
+import { ContentHeader } from '../../components'
 
 export default class Features extends React.Component {
 
@@ -11,8 +9,12 @@ export default class Features extends React.Component {
 
   render () {
     const {user, project} = this.props.params;
-    return <div className="col-xs-12">
-      <h4>Features</h4>
+    return <div>
+        <ContentHeader
+            title="Features"
+            subtitle="Features description"/>
+        <section className="content">
+        </section>
     </div>
 
   }

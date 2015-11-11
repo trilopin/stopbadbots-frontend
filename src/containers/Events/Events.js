@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import { ContentHeader } from '../../components'
 
 export default class Events extends React.Component {
 
@@ -8,8 +9,12 @@ export default class Events extends React.Component {
 
   render () {
     const {user, project} = this.props.params;
-    return <div className="col-xs-12">
-      <h4>Events</h4>
+    return <div>
+        <ContentHeader
+            title="Events"
+            subtitle="Events description"/>
+        <section className="content">
+        </section>
     </div>
 
   }
