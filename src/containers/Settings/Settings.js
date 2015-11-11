@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import { ContentHeader } from '../../components'
 
 export default class Settings extends React.Component {
 
@@ -8,8 +9,12 @@ export default class Settings extends React.Component {
 
   render () {
     const {user, project} = this.props.params;
-    return <div className="row">
-      <h4>Settings</h4>
+    return <div>
+        <ContentHeader
+            title="Settings"
+            subtitle="Settings description"/>
+        <section className="content">
+        </section>
     </div>
 
   }

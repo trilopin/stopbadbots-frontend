@@ -2,7 +2,7 @@ import { PROJECT_LIST_FETCHED, PROJECT_LIST_REQUESTED, PROJECT_LIST_FAILED } fro
 import createReducer from '../util/create-reducer'
 
 const initialState = {
-  items: {},
+  items: [],
   isFetching: false,
   currentProject: null,
   lastUpdated: null,

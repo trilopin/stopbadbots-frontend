@@ -7,8 +7,10 @@ import makeStore from './util/store'
 import { DevTools } from './containers/'
 import getRoutes from './routes';
 import makeRouteHooksSafe from './util/makeRouteHooksSafe';
-import './scss/main.scss';
-
+import '../assets/scss/AdminLTE.scss';
+import '../assets/scss/skin-blue.scss';
+import '../assets/js/bootstrap.min.js'
+import '../assets/js/app.js'
 
 const store = makeStore(makeRouteHooksSafe(getRoutes));
 

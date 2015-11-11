@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import { ContentHeader } from '../../components'
 
 export default class Data extends React.Component {
 
@@ -8,8 +9,12 @@ export default class Data extends React.Component {
 
   render () {
     const {user, project} = this.props.params;
-    return <div className="row">
-      <h4>Data</h4>
+    return <div>
+        <ContentHeader
+            title="Data"
+            subtitle="Data description"/>
+        <section className="content">
+        </section>
     </div>
 
   }
