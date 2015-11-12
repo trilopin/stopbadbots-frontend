@@ -240,10 +240,10 @@ function _init() {
   $.AdminLTE.layout = {
     activate: function () {
       var _this = this;
-      _this.fix();
+      //_this.fix();
       _this.fixSidebar();
       $(window, ".wrapper").resize(function () {
-        _this.fix();
+      //  _this.fix();
         _this.fixSidebar();
       });
     },

@@ -10,10 +10,40 @@ import { connect } from 'react-redux';
 })
 export default class Application extends React.Component {
 
-  constructor (props) {
+  constructor(props) {
     super(props)
+    this.updateDimensions = this.updateDimensions.bind(this)
   }
 
+  getHeight(className) {
+    let element = document.getElementsByClassName(className)
+    return parseInt(window.getComputedStyle(element[0]).height)
+  }
+
+  setHeight(className, height) {
+    let element = document.getElementsByClassName(className)[0]
+    element.style.height = height + 'px'
+  }
+
+  updateDimensions() {
+      let neg = this.getHeight('main-header') + this.getHeight('main-footer')
+      let window_height = $(window).height()
+      let sidebar_height = this.getHeight('sidebar')
+      if (window_height >= sidebar_height) {
+        this.setHeight('content-wrapper',  window_height - neg)
+      } else {
+        this.setHeight('content-wrapper',  sidebar_height)
+      }
+  }
+
+  componentDidMount() {
+    this.updateDimensions()
+    window.addEventListener("resize", this.updateDimensions)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updateDimensions)
+  }
 
   render() {
     return <div className="wrapper">
