@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
-import './Header.scss';
 import userPicture from '../../../assets/img/user2-160x160.jpg'
 
 
@@ -130,7 +129,7 @@ export default class Header extends React.Component {
                   <a href="#" className="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div className="pull-right">
-                  <a href="#" className="btn btn-default btn-flat">Sign out</a>
+                  <Link to="/logout" className="btn btn-default btn-flat">Sign out</Link>
                 </div>
               </li>
             </ul>

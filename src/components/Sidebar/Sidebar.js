@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 import classNames from 'classnames'
-import './Sidebar.scss';
 import userPicture from '../../../assets/img/user2-160x160.jpg'
 
 
