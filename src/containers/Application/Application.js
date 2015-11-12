@@ -16,18 +16,16 @@ export default class Application extends React.Component {
 
 
   render() {
-    return <div className="skin-blue sidebar-mini">
-      <div className="wrapper">
-        <Header location={this.props.location}/>
-        <Sidebar
-          user={this.props.auth.username}
-          project='citiservi_es'
-          location={this.props.location} />
-        <div className="content-wrapper">
-          {this.props.children}
-        </div>
-        <Footer/>
+    return <div className="wrapper">
+      <Header location={this.props.location}/>
+      <Sidebar
+        user={this.props.auth.username}
+        project='citiservi_es'
+        location={this.props.location} />
+      <div className="content-wrapper">
+        {this.props.children}
       </div>
+      <Footer/>
     </div>
   }
 }

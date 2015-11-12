@@ -51,7 +51,7 @@ class LoginForm extends Component {
           </div>
           <div className="row">
             <div className="col-xs-8">
-              <div className="checkbox icheck">
+              <div className="checkbox">
                 <label>
                   <input type="checkbox"/> Remember Me
                 </label>

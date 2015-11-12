@@ -22,10 +22,10 @@ export default class Login extends Component {
 
   // fix multiple body based design (adminlte)
   componentWillMount(){
-      document.body.style.backgroundColor = "#d2d6de";
+      document.body.className = "hold-transition login-page";
   }
   componentWillUnmount(){
-      document.body.style.backgroundColor = null;
+      document.body.className = "hold-transition skin-blue sidebar-mini";
   }
 
   handleSubmit () {
@@ -42,9 +42,7 @@ export default class Login extends Component {
   }
 
   render() {
-    return <div className="login-page">
-      <LoginForm failed={this.props.auth.failed} onSubmit={this.handleSubmit}/>
-    </div>
+    return <LoginForm failed={this.props.auth.failed} onSubmit={this.handleSubmit}/>
   }
 
 }
