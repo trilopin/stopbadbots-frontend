@@ -4,8 +4,8 @@ var config = {
   devtool: 'eval',
   entry: [
      'webpack-hot-middleware/client',
+    'bootstrap-sass!./src/bootstrap-sass.config.js',
      path.resolve(__dirname, 'src/main.js'),
-    'bootstrap-sass!./src/bootstrap-sass.config.js'
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),

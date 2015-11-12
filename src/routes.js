@@ -18,7 +18,6 @@ import {
 export default (store) => {
   const requireLogin = (nextState, replaceState, cb) => {
     const { auth: { token }} = store.getState();
-    console.log('token '+token)
     if (!token) {
         replaceState(null, '/login');
     }
@@ -28,13 +27,12 @@ export default (store) => {
   return (
     <Route>
         <Route component={Application} onEnter={requireLogin}>
-                <Route path="/projects" component={Projects} />
-                <Route path=":user/:project/data" component={Data}/>
-                <Route path=":user/:project/features" component={Features}/>
-                <Route path=":user/:project/events" component={Events}/>
-                <Route path=":user/:project/predictions" component={Predictions}/>
-                <Route path=":user/:project/settings" component={Settings}/>
-
+            <Route path="/projects" component={Projects} />
+            <Route path=":user/:project/data" component={Data}/>
+            <Route path=":user/:project/features" component={Features}/>
+            <Route path=":user/:project/events" component={Events}/>
+            <Route path=":user/:project/predictions" component={Predictions}/>
+            <Route path=":user/:project/settings" component={Settings}/>
         </Route>
         <Route path="/login" component={Login} />
         <Route path="/logout" component={Logout} />
