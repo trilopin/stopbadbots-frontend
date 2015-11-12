@@ -30,9 +30,9 @@ module.exports = {
   styles: {
     'mixins': true,
 
-    'normalize': true,
-    'print': true,
-    'glyphicons': true,
+    'normalize': false, // changed
+    'print': false, // changed
+    'glyphicons': false, // changed
 
     'scaffolding': true,
     'type': true,
