@@ -20,6 +20,13 @@ export default class Login extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
+  // fix multiple body based design (adminlte)
+  componentWillMount(){
+      document.body.style.backgroundColor = "#d2d6de";
+  }
+  componentWillUnmount(){
+      document.body.style.backgroundColor = null;
+  }
 
   handleSubmit () {
     const {username, password} = this.props.login;
@@ -34,12 +41,13 @@ export default class Login extends Component {
     this.props.dispatch(login(params));
   }
 
-  render () {
-    return (
-      <div className="container">
-        <LoginForm failed={this.props.auth.failed} onSubmit={this.handleSubmit}/>
-      </div>
-    );
+  render() {
+    return <div className="login-page">
+      <LoginForm failed={this.props.auth.failed} onSubmit={this.handleSubmit}/>
+    </div>
   }
 
 }
+
+
+

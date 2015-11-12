@@ -16,7 +16,8 @@ export default class Application extends React.Component {
 
 
   render() {
-    return <div className="wrapper">
+    return <div className="skin-blue sidebar-mini">
+      <div className="wrapper">
         <Header location={this.props.location}/>
         <Sidebar
           user={this.props.auth.username}
@@ -27,5 +28,6 @@ export default class Application extends React.Component {
         </div>
         <Footer/>
       </div>
+    </div>
   }
 }
