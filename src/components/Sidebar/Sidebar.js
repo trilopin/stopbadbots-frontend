@@ -6,13 +6,18 @@ import userPicture from '../../../assets/img/user2-160x160.jpg'
 
 export default class Sidebar extends React.Component {
 
+  static propTypes = {
+    user: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    links: PropTypes.array.isRequired,
+  }
+
   constructor (props) {
     super(props)
   }
 
-
   render () {
-    const {user, links} = this.props;
+    const {user, links, location} = this.props;
 
     const blocks = links.map( (block) =>
       <SidebarMenu
@@ -34,6 +39,11 @@ export default class Sidebar extends React.Component {
 
 
 class SidebarUser extends React.Component {
+
+  static propTypes = {
+    user: PropTypes.string.isRequired
+  }
+
   constructor (props) {
     super(props)
   }

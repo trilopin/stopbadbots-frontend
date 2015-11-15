@@ -6,6 +6,12 @@ import classNames from 'classnames'
 
 export default class ContentHeader extends React.Component {
 
+  static propTypes = {
+    title: PropTypes.string.isRequired,
+    subtitle: PropTypes.string,
+    breadcrumb: PropTypes.array,
+  }
+
   constructor (props) {
     super(props)
   }
