@@ -12,33 +12,20 @@ export default class Sidebar extends React.Component {
 
 
   render () {
-    const {user, project} = this.props;
-    const globalLinks = [
-      { anchor: "Projects", href: `/projects`, className: "fa fa-list-ul" },
-    ]
-    const projectLinks = [
-      { anchor: "Data", href: `/${user}/${project}/data`, className: "fa fa-table" },
-      { anchor: "Features", href: `/${user}/${project}/features`, className: "fa fa-signal" },
-      { anchor: "Predictions", href: `/${user}/${project}/predictions`, className: "fa fa-rocket" },
-      { anchor: "Events", href: `/${user}/${project}/events`, className: "fa fa-exclamation-triangle" },
-      { anchor: "Settings", href: `/${user}/${project}/settings`, className: "fa fa-cogs" },
-    ]
+    const {user, links} = this.props;
+
+    const blocks = links.map( (block) =>
+      <SidebarMenu
+        key={ block.header }
+        location={ location }
+        header={ block.header }
+        links={ block.links } />
+    )
+
     return <aside className="main-sidebar">
       <section className="sidebar">
-
         <SidebarUser user={user}/>
-
-
-        <SidebarMenu
-          location={ location }
-          header="GLOBAL"
-          links={ globalLinks } />
-
-        <SidebarMenu
-          location={ location }
-          header={ project.toUpperCase() }
-          links={ projectLinks } />
-
+        { blocks }
       </section>
     </aside>
   }

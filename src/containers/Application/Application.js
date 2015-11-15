@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react'
 import { Header, Footer, Sidebar } from '../../components/'
 import { connect } from 'react-redux';
 
+
 @connect((state, props) => {
   return {
     auth: state.auth,
@@ -16,7 +17,9 @@ export default class Application extends React.Component {
   }
 
   updateDimensions() {
-      const getHeight = (element) => parseInt(window.getComputedStyle(element).height)
+      const getHeight = (element) => {
+        return parseInt(window.getComputedStyle(element).height)
+      }
 
       let neg = getHeight(this.refs.header) + getHeight(this.refs.footer)
       let window_height = $(window).height()
@@ -38,6 +41,30 @@ export default class Application extends React.Component {
   }
 
   render() {
+
+    let sidebarLinks = [
+      {
+        header: 'GLOBAL',
+        links: [
+          { anchor: "Projects", href: `/projects`, className: "fa fa-list-ul" },
+        ]
+      }
+    ]
+
+    if(true) {
+      let project = 'my_project'
+      sidebarLinks.push({
+        header: project.toUpperCase(),
+        links: [
+          { anchor: "Data", href: `/${this.props.auth.username}/${project}/data`, className: "fa fa-table" },
+          { anchor: "Features", href: `/${this.props.auth.username}/${project}/features`, className: "fa fa-signal" },
+          { anchor: "Predictions", href: `/${this.props.auth.username}/${project}/predictions`, className: "fa fa-rocket" },
+          { anchor: "Events", href: `/${this.props.auth.username}/${project}/events`, className: "fa fa-exclamation-triangle" },
+          { anchor: "Settings", href: `/${this.props.auth.username}/${project}/settings`, className: "fa fa-cogs" },
+        ]
+      })
+    }
+
     return <div className="wrapper">
       <div ref="header">
         <Header location={this.props.location}/>
@@ -45,7 +72,7 @@ export default class Application extends React.Component {
       <div ref="sidebar">
         <Sidebar
           user={this.props.auth.username}
-          project='citiservi_es'
+          links={sidebarLinks}
           location={this.props.location} />
         </div>
       <div className="content-wrapper" ref="content">
