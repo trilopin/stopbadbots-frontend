@@ -15,24 +15,16 @@ export default class Application extends React.Component {
     this.updateDimensions = this.updateDimensions.bind(this)
   }
 
-  getHeight(className) {
-    let element = document.getElementsByClassName(className)
-    return parseInt(window.getComputedStyle(element[0]).height)
-  }
-
-  setHeight(className, height) {
-    let element = document.getElementsByClassName(className)[0]
-    element.style.height = height + 'px'
-  }
-
   updateDimensions() {
-      let neg = this.getHeight('main-header') + this.getHeight('main-footer')
+      const getHeight = (element) => parseInt(window.getComputedStyle(element).height)
+
+      let neg = getHeight(this.refs.header) + getHeight(this.refs.footer)
       let window_height = $(window).height()
-      let sidebar_height = this.getHeight('sidebar')
+      let sidebar_height = getHeight(this.refs.sidebar)
       if (window_height >= sidebar_height) {
-        this.setHeight('content-wrapper',  window_height - neg)
+        this.refs.content.style.height = (window_height - neg) + 'px'
       } else {
-        this.setHeight('content-wrapper',  sidebar_height)
+        this.refs.content.style.height = sidebar_height + 'px'
       }
   }
 
@@ -47,15 +39,21 @@ export default class Application extends React.Component {
 
   render() {
     return <div className="wrapper">
-      <Header location={this.props.location}/>
-      <Sidebar
-        user={this.props.auth.username}
-        project='citiservi_es'
-        location={this.props.location} />
-      <div className="content-wrapper">
+      <div ref="header">
+        <Header location={this.props.location}/>
+      </div>
+      <div ref="sidebar">
+        <Sidebar
+          user={this.props.auth.username}
+          project='citiservi_es'
+          location={this.props.location} />
+        </div>
+      <div className="content-wrapper" ref="content">
         {this.props.children}
       </div>
-      <Footer/>
+      <div ref="footer">
+        <Footer/>
+      </div>
     </div>
   }
 }
