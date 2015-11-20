@@ -15,7 +15,26 @@ var config = {
   module: {
     loaders: [
       //JSX
-      { test: /\.js?$/, loaders: [ 'babel'], include: path.join(__dirname, 'src') },
+      { test: /\.js?$/,
+        loader:  'babel',
+        include: path.join(__dirname, 'src'),
+        query: {
+                stage: 0,
+                plugins: ['react-transform'],
+                extra: {
+                "react-transform": {
+                  "transforms": [{
+                      "transform": "react-transform-hmr",
+                      "imports": ["react"],
+                      "locals": ["module"]
+                  }, {
+                      "transform": "react-transform-catch-errors",
+                      "imports": ["react", "redbox-react"]
+                  }]
+                }
+            }
+        }
+      },
       { test: /\.scss$/, loader: "style!css!sass?outputStyle=expanded" },
       { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,   loader: "url?limit=10000&mimetype=application/font-woff" },
       { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,  loader: "url?limit=10000&mimetype=application/font-woff" },

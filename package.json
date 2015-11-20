@@ -49,12 +49,21 @@
     "webpack-dev-middleware": "~1.2.0",
     "webpack-hot-middleware": "~2.4.1",
     "rimraf": "~2.4.3",
-    "redbox-react": "~1.1.1"
+    "redbox-react": "~1.1.1",
+    "sinon-chai": "~2.8.0",
+    "chai": "~3.4.1",
+    "sinon": "~1.17.2",
+    "mocha": "~2.3.4",
+    "node-jsdom": "~3.1.5",
+    "babel": "~6.1.18",
+    "mocha-babel": "~3.0.0",
+    "react-addons-test-utils": "~0.14.2"
   },
   "scripts": {
     "clean": "rimraf dist",
     "build:webpack": "NODE_ENV=production webpack --config webpack.config.prod.js",
     "build": "npm run clean && npm run build:webpack",
+    "test": "mocha --opts ./test/mocha.opts --compilers js:babel-core/register --recursive test/**/*.jsx",
     "start": "node devServer.js",
     "lint": "eslint app"
   }
